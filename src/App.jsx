@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from 'react';
 import { Mail, Phone, Github, Linkedin, Code2, Briefcase, GraduationCap, Home, User, Eye, Brain, Users, Puzzle, MessageCircle, Send, FileText, Sun, Moon } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import portfolioImg from './assets/porfolio.png';
-// CV file is now in public folder
 
 function App() {
   const [activeTab, setActiveTab] = useState('accueil');
   const [theme, setTheme] = useState('dark');
+  const form = useRef();
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -17,11 +17,8 @@ function App() {
     }
   };
 
-  const form = useRef();
-
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs.sendForm('service_1v7q7qk', 'template_7q7q7qk', form.current, 'user_1234567890abcdef')
       .then((result) => {
           alert('Message envoyé avec succès !');
@@ -56,6 +53,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100 relative overflow-hidden">
+      {/* Background */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 animate-pulse"></div>
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-emerald-400/10 rounded-full blur-3xl animate-bounce"></div>
@@ -64,100 +62,60 @@ function App() {
         <div className="absolute top-3/4 right-1/3 w-32 h-32 bg-yellow-400/10 rounded-full blur-xl animate-pulse"></div>
       </div>
 
+      {/* Navigation */}
       <nav className="fixed top-0 z-50 w-full backdrop-blur-md bg-white/90 dark:bg-slate-900/90 border-b border-gray-300 dark:border-slate-700 shadow-sm">
-        <div className="max-w-6xl mx-auto px-6 py-4">
-        <div className="flex items-center">
-            <div className="flex gap-1 ml-auto">
-              <button
-                onClick={() => { setActiveTab('accueil'); scrollToSection('accueil'); }}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
-                  activeTab === 'accueil'
-                    ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/50'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-slate-800/50'
-                }`}
-              >
-                <Home size={18} />
-                <span className="hidden sm:inline">Accueil</span>
-              </button>
-              <button
-                onClick={() => { setActiveTab('qualites'); scrollToSection('qualites'); }}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
-                  activeTab === 'qualites'
-                    ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/50'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-slate-800/50'
-                }`}
-              >
-                <Code2 size={18} />
-                <span className="hidden sm:inline">Qualités</span>
-              </button>
-              <button
-                onClick={() => { setActiveTab('apropos'); scrollToSection('apropos'); }}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
-                  activeTab === 'apropos'
-                    ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/50'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-slate-800/50'
-                }`}
-              >
-                <User size={18} />
-                <span className="hidden sm:inline">À propos</span>
-              </button>
-              <button
-                onClick={() => { setActiveTab('projets'); scrollToSection('projets'); }}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
-                  activeTab === 'projets'
-                    ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/50'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-slate-800/50'
-                }`}
-              >
-                <Briefcase size={18} />
-                <span className="hidden sm:inline">Projets</span>
-              </button>
-
-              <button
-                onClick={() => { setActiveTab('cv'); scrollToSection('cv'); }}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
-                  activeTab === 'cv'
-                    ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/50'
-                    : 'text-gray-400 hover:text-gray-200 hover:bg-slate-800/50'
-                }`}
-              >
-                <FileText size={18} />
-                <span className="hidden sm:inline">CV</span>
-              </button>
-              <button
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-slate-800/50 transition-all"
-              >
-                {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
-            </div>
-          </div>
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-end gap-2">
+          {['accueil','qualites','apropos','projets','cv'].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => { setActiveTab(tab); scrollToSection(tab); }}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
+                activeTab === tab
+                  ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/50'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-slate-800/50'
+              }`}
+            >
+              {{
+                accueil: <Home size={18} />,
+                qualites: <Code2 size={18} />,
+                apropos: <User size={18} />,
+                projets: <Briefcase size={18} />,
+                cv: <FileText size={18} />
+              }[tab]}
+              <span className="hidden sm:inline">{tab === 'apropos' ? 'À propos' : tab.charAt(0).toUpperCase() + tab.slice(1)}</span>
+            </button>
+          ))}
+          <button
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            className="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-slate-800/50 transition-all"
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
         </div>
       </nav>
 
-      <header id="accueil" className="mb-0 flex items-start gap-4 animate-slideInRight pl-6 pr-6 py-16">
-        <img src={portfolioImg} alt="Jacky Heriniaina" className="w-[500px] h-[500px] rounded-full object-cover shadow-lg" />
+      {/* Header */}
+      <header id="accueil" className="mb-0 flex flex-col md:flex-row items-center md:items-start gap-4 animate-slideInRight pl-6 pr-6 py-16">
+        <img src={portfolioImg} alt="Jacky Heriniaina" className="w-[250px] md:w-[500px] h-[250px] md:h-[500px] rounded-full object-cover shadow-lg" />
         <div className="flex flex-col">
-          <br />
-          <h1 className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent font-['Inter',sans-serif]">
-            RANDRIAMANANTENA Jacky Heriniaina
+          <h1 className="mt-20 text-4xl md:text-7xl font-extrabold bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent font-['Inter',sans-serif]">
+            RANDRIAMANANTENA
           </h1>
-          <p className="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mt-4 font-light max-w-xl leading-relaxed">
-            Développeur Web & Mobile Native passionné, je crée des applications modernes et performantes avec React et Node.js.
+          <h1 className="text-3xl md:text-6xl font-extrabold bg-gradient-to-r from-emerald-500 to-cyan-400 bg-clip-text text-transparent font-['Inter',sans-serif]">
+            Jacky Heriniaina
+          </h1>
+          <p className="text-lg md:text-3xl text-gray-600 dark:text-gray-300 mt-4 font-light max-w-xl leading-relaxed">
+            Développeur Web & Mobile Native passionné, je crée des applications modernes et performantes adaptées aux besoins des utilisateurs.
           </p>
           <div className="flex flex-wrap gap-4 text-sm text-gray-500 dark:text-gray-400 mt-4">
             <div className="flex items-center gap-2 hover:text-emerald-500 transition-colors cursor-pointer">
               <Mail size={18} />
               <a href="mailto:jackyheriniaina02@gmail.com">jackyheriniaina02@gmail.com</a>
             </div>
-            <div className="flex items-center gap-2 hover:text-emerald-500 transition-colors">
-              <Phone size={18} />
-              <span>034 86 985 24</span>
-            </div>
-            <div className="flex items-center gap-2 hover:text-emerald-500 transition-colors">
+            <a href="https://wa.me/261348698524" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-emerald-500 transition-colors">
               <MessageCircle size={18} />
               <span>034 86 985 24</span>
-            </div>
+            </a>
             <a href="https://github.com/Jaikciylegars95" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-emerald-500 transition-colors">
               <Github size={18} />
               <span>GitHub</span>
@@ -170,38 +128,35 @@ function App() {
         </div>
       </header>
 
+      {/* Main content */}
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="animate-fadeIn">
+          {/* Qualités */}
           <section id="qualites" className="mb-16">
             <div className="flex items-center gap-3 mb-8">
               <Code2 className="text-emerald-500" size={28} />
               <h2 className="text-3xl font-bold font-['Inter',sans-serif]">Qualités techniques</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  <div className="flex flex-col items-center bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-6 md:p-10 hover:border-emerald-500/50 transition-all group">
-                    <Eye className="text-emerald-500 mb-4" size={40} />
-                    <h3 className="text-lg md:text-xl font-semibold mb-4 text-emerald-500 text-center">Curieux et passionné</h3>
-                    <p className="text-gray-600 dark:text-gray-300 font-light text-center text-sm md:text-base">Toujours en veille sur les nouvelles technologies du web.</p>
-                  </div>
-                  <div className="flex flex-col items-center bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-6 md:p-10 hover:border-emerald-500/50 transition-all group">
-                    <Brain className="text-emerald-500 mb-4" size={40} />
-                    <h3 className="text-lg md:text-xl font-semibold mb-4 text-emerald-500 text-center">Logique et analytique</h3>
-                    <p className="text-gray-600 dark:text-gray-300 font-light text-center text-sm md:text-base">Capable de résoudre efficacement les problèmes techniques.</p>
-                  </div>
-                  <div className="flex flex-col items-center bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-6 md:p-10 hover:border-emerald-500/50 transition-all group">
-                    <Users className="text-emerald-500 mb-4" size={40} />
-                    <h3 className="text-lg md:text-xl font-semibold mb-4 text-emerald-500 text-center">Collaboratif</h3>
-                    <p className="text-gray-600 dark:text-gray-300 font-light text-center text-sm md:text-base">Bonne communication et esprit d'équipe dans les projets.</p>
-                  </div>
-                  <div className="flex flex-col items-center bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-6 md:p-10 hover:border-emerald-500/50 transition-all group">
-                    <Puzzle className="text-emerald-500 mb-4" size={40} />
-                    <h3 className="text-lg md:text-xl font-semibold mb-4 text-emerald-500 text-center">Rigoureux</h3>
-                    <p className="text-gray-600 dark:text-gray-300 font-light text-center text-sm md:text-base">Code propre, structuré et orienté vers la qualité.</p>
-                  </div>
-
+              {[{
+                icon: Eye, title: "Curieux et passionné", desc: "Toujours en veille sur les nouvelles technologies."
+              },{
+                icon: Brain, title: "Logique et analytique", desc: "Capable de résoudre efficacement les problèmes techniques."
+              },{
+                icon: Users, title: "Collaboratif", desc: "Bonne communication et esprit d'équipe dans les projets."
+              },{
+                icon: Puzzle, title: "Rigoureux", desc: "Code propre, structuré et orienté vers la qualité."
+              }].map((qualite, idx) => (
+                <div key={idx} className="flex flex-col items-center bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-6 md:p-10 hover:border-emerald-500/50 transition-all group">
+                  <qualite.icon className="text-emerald-500 mb-4" size={40} />
+                  <h3 className="text-lg md:text-xl font-semibold mb-4 text-emerald-500 text-center">{qualite.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 font-light text-center text-sm md:text-base">{qualite.desc}</p>
+                </div>
+              ))}
             </div>
           </section>
 
+          {/* Formation */}
           <section id="formation" className="mb-16">
             <div className="flex items-center gap-3 mb-8">
               <GraduationCap className="text-emerald-500" size={28} />
@@ -214,6 +169,7 @@ function App() {
             </div>
           </section>
 
+          {/* À propos */}
           <section id="apropos" className="mb-16">
             <div className="flex items-center gap-3 mb-8">
               <User className="text-emerald-500" size={28} />
@@ -221,17 +177,15 @@ function App() {
             </div>
             <div className="bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-4 md:p-8">
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 font-light text-base md:text-lg">
-              Développeur passionné avec une solide formation en informatique, je me spécialise dans la création d'applications web et mobile performantes et intuitives. J'ai également des compétences en développement logiciel, en maintenance informatique et en administration réseau, ce qui me permet d'intervenir aussi bien sur la conception que sur le support technique et les infrastructures.
+                Développeur passionné avec une solide formation en informatique, je me spécialise dans la création d'applications web et mobile performantes et intuitives. J'ai également des compétences en développement logiciel, en maintenance informatique et en administration réseau, ce qui me permet d'intervenir aussi bien sur la conception que sur le support technique et les infrastructures.
               </p>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 font-light text-base md:text-lg">
-                Mon approche combine créativité technique et attention aux détails pour livrer
-                des solutions qui répondent aux besoins réels des utilisateurs. Je suis toujours
-                en quête d'apprentissage et d'amélioration continue.
+                Mon approche combine créativité technique et attention aux détails pour livrer des solutions qui répondent aux besoins réels des utilisateurs. Je suis toujours en quête d'apprentissage et d'amélioration continue.
               </p>
-
             </div>
           </section>
 
+          {/* Projets */}
           <section id="projets" className="mb-16">
             <div className="flex items-center gap-3 mb-8">
               <Briefcase className="text-emerald-500" size={28} />
@@ -248,18 +202,9 @@ function App() {
                   Node.js et Express pour le backend, et MySQL pour la base de données.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
-                  <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium">
-                    React
-                  </span>
-                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">
-                    Node.js
-                  </span>
-                  <span className="px-3 py-1 bg-green-100 dark:dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">
-                    Express
-                  </span>
-                  <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium">
-                    MySQL
-                  </span>
+                  {['React','Node.js','Express','MySQL'].map((tech, i) => (
+                    <span key={i} className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium">{tech}</span>
+                  ))}
                 </div>
                 <div className="flex gap-4">
                   <a
@@ -276,8 +221,7 @@ function App() {
             </div>
           </section>
 
-
-
+          {/* CV */}
           <section id="cv" className="mb-16">
             <div className="flex items-center gap-3 mb-8">
               <FileText className="text-emerald-500" size={28} />
@@ -304,23 +248,27 @@ function App() {
               </div>
             </div>
           </section>
+
+          {/* Contacter */}
+          <section id="contacter" className="mb-16">
+            <div className="flex items-center gap-3 mb-8">
+              <Send className="text-emerald-500" size={28} />
+              <h2 className="text-3xl font-bold font-['Inter',sans-serif]">Contacter</h2>
+            </div>
+            <form ref={form} onSubmit={sendEmail} className="bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-6 md:p-8 max-w-4xl mx-auto flex flex-col gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" name="nom" placeholder="Nom" required className="w-full p-3 rounded bg-white dark:bg-slate-900 border border-gray-300 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:border-emerald-500 focus:outline-none"/>
+                <input type="text" name="prenom" placeholder="Prénom" required className="w-full p-3 rounded bg-white dark:bg-slate-900 border border-gray-300 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:border-emerald-500 focus:outline-none"/>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="email" name="email" placeholder="Email" required className="w-full p-3 rounded bg-white dark:bg-slate-900 border border-gray-300 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:border-emerald-500 focus:outline-none"/>
+                <input type="tel" name="mobile" placeholder="Numéro de mobile" required className="w-full p-3 rounded bg-white dark:bg-slate-900 border border-gray-300 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:border-emerald-500 focus:outline-none"/>
+              </div>
+              <textarea name="message" placeholder="Votre message" required className="w-full p-3 rounded bg-white dark:bg-slate-900 border border-gray-300 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:border-emerald-500 focus:outline-none min-h-[120px]"></textarea>
+              <button type="submit" className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold transition-all w-max">Envoyer</button>
+            </form>
+          </section>
         </div>
-
-
-
-        <footer className="border-t border-gray-300 dark:border-slate-700 pt-8 mt-20">
-          <div className="flex justify-center gap-6">
-            <a href="https://github.com/Jaikciylegars95" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-100/50 dark:bg-slate-800/50 rounded-lg hover:bg-emerald-500/10 hover:text-emerald-500 transition-all border border-gray-300 dark:border-slate-700 hover:border-emerald-500/50">
-              <Github size={24} />
-            </a>
-            <a href="https://www.linkedin.com/in/jacky-randriamanantena-488a62248" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-100/50 dark:bg-slate-800/50 rounded-lg hover:bg-emerald-500/10 hover:text-emerald-500 transition-all border border-gray-300 dark:border-slate-700 hover:border-emerald-500/50">
-              <Linkedin size={24} />
-            </a>
-          </div>
-          <p className="text-center text-gray-600 dark:text-gray-500 mt-6 text-sm">
-            © 2025 Jacky Heriniaina. Tous droits réservés.
-          </p>
-        </footer>
       </div>
     </div>
   );
