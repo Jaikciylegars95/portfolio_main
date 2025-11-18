@@ -94,39 +94,44 @@ function App() {
         </div>
       </nav>
 
-      {/* Header */}
-      <header id="accueil" className="mb-0 flex flex-col md:flex-row items-center md:items-start gap-4 animate-slideInRight pl-6 pr-6 py-16">
-        <img src={portfolioImg} alt="Jacky Heriniaina" className="w-[250px] md:w-[500px] h-[250px] md:h-[500px] rounded-full object-cover shadow-lg" />
-        <div className="flex flex-col">
-          <h1 className="mt-20 text-4xl md:text-7xl font-extrabold bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent font-['Inter',sans-serif]">
-            RANDRIAMANANTENA
-          </h1>
-          <h1 className="text-3xl md:text-6xl font-extrabold bg-gradient-to-r from-emerald-500 to-cyan-400 bg-clip-text text-transparent font-['Inter',sans-serif]">
-            Jacky Heriniaina
-          </h1>
-          <p className="text-lg md:text-3xl text-gray-600 dark:text-gray-300 mt-4 font-light max-w-xl leading-relaxed">
-            Développeur Web & Mobile Native passionné, je crée des applications modernes et performantes adaptées aux besoins des utilisateurs.
-          </p>
-          <div className="flex flex-wrap gap-4 text-sm text-gray-500 dark:text-gray-400 mt-4">
-            <div className="flex items-center gap-2 hover:text-emerald-500 transition-colors cursor-pointer">
-              <Mail size={18} />
-              <a href="mailto:jackyheriniaina02@gmail.com">jackyheriniaina02@gmail.com</a>
-            </div>
-            <a href="https://wa.me/261348698524" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-emerald-500 transition-colors">
-              <MessageCircle size={18} />
-              <span>034 86 985 24</span>
-            </a>
-            <a href="https://github.com/Jaikciylegars95" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-emerald-500 transition-colors">
-              <Github size={18} />
-              <span>GitHub</span>
-            </a>
-            <a href="https://www.linkedin.com/in/jacky-randriamanantena-488a62248" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-emerald-500 transition-colors">
-              <Linkedin size={18} />
-              <span>LinkedIn</span>
-            </a>
-          </div>
-        </div>
-      </header>
+     {/* Header */}
+<header id="accueil" className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 px-4 sm:px-6 md:px-6 py-16 md:py-20">
+  <img 
+    src={portfolioImg} 
+    alt="Jacky Heriniaina" 
+    className="w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 rounded-full object-cover shadow-lg flex-shrink-0"
+  />
+  <div className="flex flex-col w-full max-w-full">
+    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent break-words">
+      RANDRIAMANANTENA
+    </h1>
+    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-emerald-500 to-cyan-400 bg-clip-text text-transparent break-words mt-1">
+      Jacky Heriniaina
+    </h2>
+    <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 mt-4 font-light leading-relaxed break-words max-w-full">
+      Développeur Web & Mobile Native passionné, je crée des applications modernes et performantes adaptées aux besoins des utilisateurs.
+    </p>
+    <div className="flex flex-wrap gap-3 mt-4 text-sm sm:text-base md:text-base lg:text-lg">
+      <div className="flex items-center gap-2 hover:text-emerald-500 transition-colors cursor-pointer break-words">
+        <Mail size={18} />
+        <a href="mailto:jackyheriniaina02@gmail.com" className="break-words">jackyheriniaina02@gmail.com</a>
+      </div>
+      <a href="https://wa.me/261348698524" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-emerald-500 transition-colors break-words">
+        <MessageCircle size={18} />
+        <span className="break-words">034 86 985 24</span>
+      </a>
+      <a href="https://github.com/Jaikciylegars95" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-emerald-500 transition-colors break-words">
+        <Github size={18} />
+        <span className="break-words">GitHub</span>
+      </a>
+      <a href="https://www.linkedin.com/in/jacky-randriamanantena-488a62248" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-emerald-500 transition-colors break-words">
+        <Linkedin size={18} />
+        <span className="break-words">LinkedIn</span>
+      </a>
+    </div>
+  </div>
+</header>
+
 
       {/* Main content */}
       <div className="max-w-6xl mx-auto px-6 relative z-10">
