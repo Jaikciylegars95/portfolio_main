@@ -11,7 +11,7 @@ function App() {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const yOffset = -100; // Adjust for nav height
+      const yOffset = -90; // Adjust for nav height
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
@@ -177,26 +177,26 @@ function App() {
               <Code2 className="text-emerald-500" size={28} />
               <h2 className="text-3xl font-bold font-['Inter',sans-serif]">Qualités techniques</h2>
             </div>
-            <div className="flex gap-6 justify-center">
-                  <div className="flex flex-col items-center bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-10 hover:border-emerald-500/50 transition-all group w-72">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <div className="flex flex-col items-center bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-6 md:p-10 hover:border-emerald-500/50 transition-all group">
                     <Eye className="text-emerald-500 mb-4" size={40} />
-                    <h3 className="text-xl font-semibold mb-4 text-emerald-500 text-center">Curieux et passionné</h3>
-                    <p className="text-gray-600 dark:text-gray-300 font-light text-center">Toujours en veille sur les nouvelles technologies du web.</p>
+                    <h3 className="text-lg md:text-xl font-semibold mb-4 text-emerald-500 text-center">Curieux et passionné</h3>
+                    <p className="text-gray-600 dark:text-gray-300 font-light text-center text-sm md:text-base">Toujours en veille sur les nouvelles technologies du web.</p>
                   </div>
-                  <div className="flex flex-col items-center bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-10 hover:border-emerald-500/50 transition-all group w-72">
+                  <div className="flex flex-col items-center bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-6 md:p-10 hover:border-emerald-500/50 transition-all group">
                     <Brain className="text-emerald-500 mb-4" size={40} />
-                    <h3 className="text-xl font-semibold mb-4 text-emerald-500 text-center">Logique et analytique</h3>
-                    <p className="text-gray-600 dark:text-gray-300 font-light text-center">Capable de résoudre efficacement les problèmes techniques.</p>
+                    <h3 className="text-lg md:text-xl font-semibold mb-4 text-emerald-500 text-center">Logique et analytique</h3>
+                    <p className="text-gray-600 dark:text-gray-300 font-light text-center text-sm md:text-base">Capable de résoudre efficacement les problèmes techniques.</p>
                   </div>
-                  <div className="flex flex-col items-center bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-10 hover:border-emerald-500/50 transition-all group w-72">
+                  <div className="flex flex-col items-center bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-6 md:p-10 hover:border-emerald-500/50 transition-all group">
                     <Users className="text-emerald-500 mb-4" size={40} />
-                    <h3 className="text-xl font-semibold mb-4 text-emerald-500 text-center">Collaboratif</h3>
-                    <p className="text-gray-600 dark:text-gray-300 font-light text-center">Bonne communication et esprit d'équipe dans les projets.</p>
+                    <h3 className="text-lg md:text-xl font-semibold mb-4 text-emerald-500 text-center">Collaboratif</h3>
+                    <p className="text-gray-600 dark:text-gray-300 font-light text-center text-sm md:text-base">Bonne communication et esprit d'équipe dans les projets.</p>
                   </div>
-                  <div className="flex flex-col items-center bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-10 hover:border-emerald-500/50 transition-all group w-72">
+                  <div className="flex flex-col items-center bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-6 md:p-10 hover:border-emerald-500/50 transition-all group">
                     <Puzzle className="text-emerald-500 mb-4" size={40} />
-                    <h3 className="text-xl font-semibold mb-4 text-emerald-500 text-center">Rigoureux</h3>
-                    <p className="text-gray-600 dark:text-gray-300 font-light text-center">Code propre, structuré et orienté vers la qualité.</p>
+                    <h3 className="text-lg md:text-xl font-semibold mb-4 text-emerald-500 text-center">Rigoureux</h3>
+                    <p className="text-gray-600 dark:text-gray-300 font-light text-center text-sm md:text-base">Code propre, structuré et orienté vers la qualité.</p>
                   </div>
 
             </div>
@@ -205,25 +205,25 @@ function App() {
           <section id="formation" className="mb-16">
             <div className="flex items-center gap-3 mb-8">
               <GraduationCap className="text-emerald-500" size={28} />
-              <h2 className="text-3xl font-bold font-['Inter',sans-serif]">Formation</h2>
+              <h2 className="text-2xl md:text-3xl font-bold font-['Inter',sans-serif]">Formation</h2>
             </div>
-            <div className="bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-6 hover:border-emerald-500/50 transition-all">
-              <h3 className="text-xl font-semibold text-emerald-500">Diplôme de Licence en Informatique</h3>
-              <p className="text-gray-500 dark:text-gray-400 mt-2 font-light">University FJKM Ravelojaona Ampandrana</p>
-              <p className="text-gray-600 dark:text-gray-500 mt-1 font-light">25 ans</p>
+            <div className="bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-4 md:p-6 hover:border-emerald-500/50 transition-all">
+              <h3 className="text-lg md:text-xl font-semibold text-emerald-500">Diplôme de Licence en Informatique</h3>
+              <p className="text-gray-500 dark:text-gray-400 mt-2 font-light text-sm md:text-base">University FJKM Ravelojaona Ampandrana</p>
+              <p className="text-gray-600 dark:text-gray-500 mt-1 font-light text-sm md:text-base">25 ans</p>
             </div>
           </section>
 
           <section id="apropos" className="mb-16">
             <div className="flex items-center gap-3 mb-8">
               <User className="text-emerald-500" size={28} />
-              <h2 className="text-3xl font-bold font-['Inter',sans-serif]">À propos de moi</h2>
+              <h2 className="text-2xl md:text-3xl font-bold font-['Inter',sans-serif]">À propos de moi</h2>
             </div>
-            <div className="bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-8">
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 font-light text-lg">
-              Développeur passionné avec une solide formation en informatique, je me spécialise dans la création d'applications web et mobile performantes et intuitives. J’ai également des compétences en développement logiciel, en maintenance informatique et en administration réseau, ce qui me permet d’intervenir aussi bien sur la conception que sur le support technique et les infrastructures.
+            <div className="bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-4 md:p-8">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 font-light text-base md:text-lg">
+              Développeur passionné avec une solide formation en informatique, je me spécialise dans la création d'applications web et mobile performantes et intuitives. J'ai également des compétences en développement logiciel, en maintenance informatique et en administration réseau, ce qui me permet d'intervenir aussi bien sur la conception que sur le support technique et les infrastructures.
               </p>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 font-light text-lg">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 font-light text-base md:text-lg">
                 Mon approche combine créativité technique et attention aux détails pour livrer
                 des solutions qui répondent aux besoins réels des utilisateurs. Je suis toujours
                 en quête d'apprentissage et d'amélioration continue.
@@ -281,15 +281,15 @@ function App() {
           <section id="cv" className="mb-16">
             <div className="flex items-center gap-3 mb-8">
               <FileText className="text-emerald-500" size={28} />
-              <h2 className="text-3xl font-bold font-['Inter',sans-serif]">Mon CV</h2>
+              <h2 className="text-2xl md:text-3xl font-bold font-['Inter',sans-serif]">Mon CV</h2>
             </div>
-            <div className="bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-8 max-w-4xl mx-auto">
+            <div className="bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-4 md:p-8 max-w-4xl mx-auto">
               <div className="text-center mb-6">
-                <p className="text-gray-600 dark:text-gray-300 mb-4">Votre CV est disponible au téléchargement ci-dessous.</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm md:text-base">Votre CV est disponible au téléchargement ci-dessous.</p>
                 <a
                   href="/cv.jpg"
                   download="CV_Jacky_Heriniaina.jpg"
-                  className="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6 py-3 rounded transition"
+                  className="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6 py-3 rounded transition text-sm md:text-base"
                 >
                   Télécharger le CV
                 </a>
@@ -299,7 +299,7 @@ function App() {
                   src="/cv.jpg"
                   alt="CV de Jacky Heriniaina"
                   className="max-w-full h-auto rounded-lg shadow-lg"
-                  style={{ maxHeight: '800px' }}
+                  style={{ maxHeight: '600px' }}
                 />
               </div>
             </div>
