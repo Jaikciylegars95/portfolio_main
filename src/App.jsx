@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Mail, Phone, Github, Linkedin, Code2, Briefcase, GraduationCap, Home, User, Eye, Brain, Users, Puzzle, MessageCircle, Send, FileText, Sun, Moon } from 'lucide-react';
+import { Mail, Phone, Github, Linkedin, Code2, Briefcase, GraduationCap, Home, User, Eye, Brain, Users, Puzzle, MessageCircle, FileText, Sun, Moon } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import portfolioImg from './assets/porfolio.png';
 
@@ -249,27 +249,24 @@ function App() {
             </div>
           </section>
 
-          {/* Contacter */}
-          <section id="contacter" className="mb-16">
-            <div className="flex items-center gap-3 mb-8">
-              <Send className="text-emerald-500" size={28} />
-              <h2 className="text-3xl font-bold font-['Inter',sans-serif]">Contacter</h2>
-            </div>
-            <form ref={form} onSubmit={sendEmail} className="bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-6 md:p-8 max-w-4xl mx-auto flex flex-col gap-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" name="nom" placeholder="Nom" required className="w-full p-3 rounded bg-white dark:bg-slate-900 border border-gray-300 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:border-emerald-500 focus:outline-none"/>
-                <input type="text" name="prenom" placeholder="Prénom" required className="w-full p-3 rounded bg-white dark:bg-slate-900 border border-gray-300 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:border-emerald-500 focus:outline-none"/>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="email" name="email" placeholder="Email" required className="w-full p-3 rounded bg-white dark:bg-slate-900 border border-gray-300 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:border-emerald-500 focus:outline-none"/>
-                <input type="tel" name="mobile" placeholder="Numéro de mobile" required className="w-full p-3 rounded bg-white dark:bg-slate-900 border border-gray-300 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:border-emerald-500 focus:outline-none"/>
-              </div>
-              <textarea name="message" placeholder="Votre message" required className="w-full p-3 rounded bg-white dark:bg-slate-900 border border-gray-300 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:border-emerald-500 focus:outline-none min-h-[120px]"></textarea>
-              <button type="submit" className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold transition-all w-max">Envoyer</button>
-            </form>
-          </section>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="border-t border-gray-300 dark:border-slate-700 pt-8 mt-20">
+          <div className="flex flex-wrap justify-center gap-6">
+            <a href="https://github.com/Jaikciylegars95" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-100/50 dark:bg-slate-800/50 rounded-lg hover:bg-emerald-500/10 hover:text-emerald-500 transition-all border border-gray-300 dark:border-slate-700 hover:border-emerald-500/50">
+              <Github size={24} />
+            </a>
+            <a href="https://www.linkedin.com/in/jacky-randriamanantena-488a62248" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-100/50 dark:bg-slate-800/50 rounded-lg hover:bg-emerald-500/10 hover:text-emerald-500 transition-all border border-gray-300 dark:border-slate-700 hover:border-emerald-500/50">
+              <Linkedin size={24} />
+            </a>
+          </div>
+          <p className="text-center text-gray-600 dark:text-gray-500 mt-6 text-sm">
+            © 2025 Jacky Heriniaina. Tous droits réservés.
+          </p>
+        </footer>
+
     </div>
   );
 }
