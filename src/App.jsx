@@ -7,6 +7,7 @@ function App() {
   const [activeTab, setActiveTab] = useState('accueil');
   const [theme, setTheme] = useState('dark');
   const form = useRef();
+  const [showPreview, setShowPreview] = useState(false);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -226,33 +227,51 @@ function App() {
             </div>
           </section>
 
-          {/* CV */}
-          <section id="cv" className="mb-16">
-            <div className="flex items-center gap-3 mb-8">
-              <FileText className="text-emerald-500" size={28} />
-              <h2 className="text-2xl md:text-3xl font-bold font-['Inter',sans-serif]">Mon CV</h2>
-            </div>
-            <div className="bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-4 md:p-8 max-w-4xl mx-auto">
-              <div className="text-center mb-6">
-                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm md:text-base">Votre CV est disponible au téléchargement ci-dessous.</p>
-                <a
-                  href="/cv.jpg"
-                  download="CV_Jacky_Heriniaina.jpg"
-                  className="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6 py-3 rounded transition text-sm md:text-base"
-                >
-                  Télécharger le CV
-                </a>
-              </div>
-              <div className="flex justify-center">
-                <img
-                  src="/cv.jpg"
-                  alt="CV de Jacky Heriniaina"
-                  className="max-w-full h-auto rounded-lg shadow-lg"
-                  style={{ maxHeight: '600px' }}
-                />
-              </div>
-            </div>
-          </section>
+  {/* CV */}
+<section id="cv" className="mb-16">
+  <div className="flex items-center gap-3 mb-8">
+    <FileText className="text-emerald-500" size={28} />
+    <h2 className="text-2xl md:text-3xl font-bold font-['Inter',sans-serif]">Mon CV</h2>
+  </div>
+
+  <div className="bg-gray-100/50 dark:bg-slate-800/50 backdrop-blur border border-gray-300 dark:border-slate-700 rounded-lg p-4 md:p-8 max-w-4xl mx-auto">
+
+    <div className="text-center mb-6">
+      <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm md:text-base">
+        Téléchargez ou affichez un aperçu de mon CV ci-dessous.
+      </p>
+
+      {/* Bouton Télécharger */}
+      <a
+        href="/cv.pdf"
+        download="CV_Jacky_Heriniaina.pdf"
+        className="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6 py-3 rounded transition text-sm md:text-base"
+      >
+        Télécharger le CV
+      </a>
+
+      {/* Bouton voir aperçu */}
+      <button
+        onClick={() => setShowPreview(!showPreview)}
+        className="ml-4 inline-block bg-gray-300 dark:bg-slate-700 hover:bg-gray-400 dark:hover:bg-slate-600 text-gray-900 dark:text-gray-100 font-semibold px-6 py-3 rounded transition text-sm md:text-base"
+      >
+        📄 {showPreview ? "Masquer l'aperçu" : "Voir un aperçu"}
+      </button>
+    </div>
+
+    {/* Aperçu du CV (iframe, pas de téléchargement) */}
+    {showPreview && (
+      <div className="flex justify-center mt-6">
+        <iframe
+          src="/cv.pdf#page=1&toolbar=0"
+          title="Aperçu du CV"
+          className="w-full max-w-3xl h-[600px] rounded-lg shadow-lg border"
+          style={{ pointerEvents: 'auto' }} // permet le scroll mais pas le téléchargement
+        ></iframe>
+      </div>
+    )}
+  </div>
+</section>
 
         </div>
       </div>
